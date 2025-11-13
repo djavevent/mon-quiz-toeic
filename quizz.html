@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz TOEIC</title>
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="header">
+      <h1 id="quiz-title">Quiz TOEIC</h1>
+      <p>Entraînez-vous avec des questions aléatoires</p>
+    </div>
+    
+    <div id="start-screen" class="start-screen">
+      <div class="card">
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number" id="total-questions">0</div>
+            <div class="stat-label">Questions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Par Manche</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="start-btn">Commencer le Quiz</button>
+        <div style="margin-top: 20px;">
+          <button class="btn btn-secondary" id="manage-questions-btn">Ajouter une Question</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="quiz-screen" class="quiz-screen">
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="question-number" id="question-number">Question 1/10</div>
+        <div class="question-text" id="question-text"></div>
+        <div class="options" id="options"></div>
+        <div class="explanation" id="explanation">
+          <div class="explanation-title">💡 Explication</div>
+          <div class="explanation-text" id="explanation-text"></div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn btn-secondary" id="next-btn" style="display: none;">Question Suivante</button>
+          <button class="btn btn-secondary" id="finish-btn" style="display: none;">Voir les Résultats</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="results-screen" class="results-screen">
+      <div class="card">
+        <h2>Quiz Terminé !</h2>
+        <div class="score-circle" id="score-circle">
+          <div class="score-number" id="score-number">0</div>
+          <div class="score-label">/ 10</div>
+        </div>
+        <div class="results-message" id="results-message"></div>
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="restart-btn">Recommencer</button>
+          <button class="btn btn-secondary" id="back-home-btn">Retour</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="add-question-screen" class="add-question-screen">
+      <div class="card">
+        <h2>Gérer les Questions</h2>
+        <form id="question-form">
+          <div class="form-group">
+            <label>Question (utilisez _____ pour le trou)</label>
+            <textarea id="question-input" placeholder="Ex: She _____ to the store yesterday." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Option A</label>
+            <input type="text" id="option-a" placeholder="Ex: go" required>
+          </div>
+          <div class="form-group">
+            <label>Option B</label>
+            <input type="text" id="option-b" placeholder="Ex: goes" required>
+          </div>
+          <div class="form-group">
+            <label>Option C</label>
+            <input type="text" id="option-c" placeholder="Ex: went" required>
+          </div>
+          <div class="form-group">
+            <label>Option D</label>
+            <input type="text" id="option-d" placeholder="Ex: going" required>
+          </div>
+          <div class="form-group">
+            <label>Réponse Correcte</label>
+            <div class="radio-group">
+              <label class="radio-label"> <input type="radio" name="correct" value="A" required> A </label>
+              <label class="radio-label"> <input type="radio" name="correct" value="B"> B </label>
+              <label class="radio-label"> <input type="radio" name="correct" value="C"> C </label>
+              <label class="radio-label"> <input type="radio" name="correct" value="D"> D </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Explication</label>
+            <textarea id="explanation-input" placeholder="Expliquez pourquoi c'est la bonne réponse..." required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="save-question-btn">Enregistrer</button>
+            <button type="button" class="btn btn-secondary" id="cancel-btn">Retour</button>
+          </div>
+        </form>
+        <div class="question-list" id="question-list"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="toast" id="toast"></div>
+  
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+  
+</body>
+</html>
